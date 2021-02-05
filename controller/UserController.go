@@ -67,23 +67,23 @@ func Register(ctx *gin.Context) {
 
 func Login(ctx *gin.Context) {
 	db := common.DB
-	phone := ctx.PostForm("phone")
-	password := ctx.PostForm("password")
-	if len(phone) != 11 {
-		response.Response(ctx, http.StatusUnprocessableEntity, 422, nil, "手机号必须11位")
+	var u model.User
+	ctx.BindJSON(&u)
+	if len(u.Phone) != 11 {
+		response.Response(ctx, http.StatusUnprocessableEntity, 422, gin.H{"phone": u.Phone}, "手机号必须11位")
 		return
 	}
-	if len(password) < 6 {
+	if len(u.Password) < 6 {
 		response.Response(ctx, http.StatusUnprocessableEntity, 422, nil, "密码必须大于6位")
 		return
 	}
 	var user model.User
-	db.Where("phone", phone).First(&user)
+	db.Where("phone", u.Phone).First(&user)
 	if user.ID == 0 {
 		response.Response(ctx, http.StatusUnprocessableEntity, 422, nil, "用户不存在")
 		return
 	}
-	if err := bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(password)); err != nil {
+	if err := bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(u.Password)); err != nil {
 		response.Response(ctx, http.StatusBadRequest, 400, nil, "密码错误")
 		return
 	}
@@ -95,4 +95,8 @@ func Login(ctx *gin.Context) {
 	response.Success(ctx, gin.H{"token": token}, "登陆成功")
 }
 
+func Info(ctx *gin.Context) {
+	user, _ := ctx.Get("user")
+	response.Response(ctx, http.StatusOK, 200, gin.H{"user": user}, "用户信息")
+}
 

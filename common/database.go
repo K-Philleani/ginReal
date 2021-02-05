@@ -45,7 +45,6 @@ func InitDB() *gorm.DB{
 		database,
 		charset,
 		)
-	fmt.Println(args)
 	DB, err = gorm.Open(mysql.Open(args), &gorm.Config{
 		NamingStrategy: schema.NamingStrategy{
 			SingularTable: true,
