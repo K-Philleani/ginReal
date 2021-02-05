@@ -31,11 +31,11 @@ func InitConfig() {
 func InitDB() *gorm.DB{
 	InitConfig()
 	var err error
-	username := viper.GetString("datasource.username")
-	password := viper.GetString("datasource.password")
-	host := viper.GetString("datasource.host")
-	port := viper.GetString("datasource.port")
-	database := viper.GetString("datasource.database")
+	username, _ := Base64Decode([]byte(viper.GetString("datasource.username")))
+	password, _ := Base64Decode([]byte(viper.GetString("datasource.password")))
+	host, _ := Base64Decode([]byte(viper.GetString("datasource.host")))
+	port, _ := Base64Decode([]byte(viper.GetString("datasource.port")))
+	database, _ := Base64Decode([]byte(viper.GetString("datasource.database")))
 	charset := viper.GetString("datasource.charset")
 	args := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=%s&parseTime=True",
 		username,
@@ -45,6 +45,7 @@ func InitDB() *gorm.DB{
 		database,
 		charset,
 		)
+	fmt.Println(args)
 	DB, err = gorm.Open(mysql.Open(args), &gorm.Config{
 		NamingStrategy: schema.NamingStrategy{
 			SingularTable: true,

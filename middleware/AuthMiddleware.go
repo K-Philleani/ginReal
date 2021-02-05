@@ -14,7 +14,7 @@ func AuthMiddleware() gin.HandlerFunc {
 		// 获取authorization header
 		tokenString := ctx.GetHeader("authorization")
 		if tokenString == "" || !strings.HasPrefix(tokenString, "Bearer") {
-			response.Response(ctx, http.StatusUnauthorized, 401, gin.H{"Bearer": "err"}, "权限不足")
+			response.Response(ctx, http.StatusUnauthorized, 401, gin.H{"tokenString": "err"}, "权限不足")
 			ctx.Abort()
 			return
 		}
