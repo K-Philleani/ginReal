@@ -15,7 +15,7 @@ var jwtKey = []byte("a_secret_create")
 
 func ReleaseToken(user model.User) (string, error){
 	expireTime := time.Now().Add(7 * 24 * time.Hour)
-	claim := &Claim{
+	claim := Claim{
 		UserID:         user.ID,
 		StandardClaims: jwt.StandardClaims{
 			ExpiresAt: expireTime.Unix(),
