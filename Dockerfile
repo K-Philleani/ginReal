@@ -6,8 +6,8 @@ ENV GO111MODULE=on \
     GOARCH=amd64 \
     GOPROXY=https://goproxy.cn
 
-RUN go build -o app
-RUN ls
-RUN pwd
+WORKDIR /home/ginReal
 
-CMD ["go run ./main.go"]
+EXPOSE 9090
+
+CMD ["/bin/bash", "go run main.go"]
