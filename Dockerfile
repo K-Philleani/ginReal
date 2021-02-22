@@ -19,5 +19,5 @@ RUN cp /build/app .
 
 EXPOSE 9090
 
-CMD ["/dist/main.go"]
+CMD ["/dist/app"]
 
