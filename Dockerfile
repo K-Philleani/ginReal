@@ -1,4 +1,4 @@
-FROM golang:alpine
+FROM golang:alpine AS builder
 
 ENV GO111MODULE=on \
     CGO_ENABLED=0 \
@@ -17,7 +17,9 @@ WORKDIR /dist
 
 RUN cp /build/app .
 
-EXPOSE 9090
+FROM scrach
 
-CMD ["/dist/app"]
+COPY --from=builder /build/app /
+
+ENTRYPOINT ["/app"]
 
