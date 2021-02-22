@@ -10,4 +10,4 @@ WORKDIR /home/ginReal
 
 EXPOSE 9090
 
-CMD ["/bin/bash", "go run main.go"]
+CMD ["/home/ginReal", "go run main.go"]
