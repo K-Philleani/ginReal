@@ -6,9 +6,8 @@ ENV GO111MODULE=on \
     GOARCH=amd64 \
     GOPROXY=https://goproxy.cn
 
-
-RUN go mod tidy
-
-RUN go build
+RUN go build -o app
+RUN ls
+RUN pwd
 
 CMD ["go run ./main.go"]
