@@ -7,19 +7,8 @@ ENV GO111MODULE=on \
     GOPROXY=https://goproxy.cn
 
 
-WORKDIR /build
+RUN go mod tidy
 
-COPY . .
+RUN go build
 
-RUN go build -o app .
-
-WORKDIR /dist
-
-RUN cp /build/app .
-
-FROM scrach
-
-COPY --from=builder /build/app /
-
-ENTRYPOINT ["/app"]
-
+CMD ["go run ./main.go"]
