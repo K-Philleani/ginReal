@@ -12,8 +12,10 @@ func CollectRouter(r *gin.Engine) {
 		apiGroup.POST("/register", controller.Register)
 		apiGroup.POST("/login", controller.Login)
 	}
-	authGroup := r.Group("/auth")
+	authGroup := r.Group("/auth", middleware.AuthMiddleware())
 	{
-		authGroup.GET("/info", middleware.AuthMiddleware() ,controller.Info)
+		authGroup.GET("/info", controller.Info)
+		authGroup.GET("/user/list", controller.GetUserList)
+		authGroup.POST("/user/delete", controller.DeleteUserByPhone)
 	}
 }

@@ -31,7 +31,7 @@ func AuthMiddleware() gin.HandlerFunc {
 		DB.First(&user, userId)
 
 		if user.ID == 0 {
-			response.Response(ctx, http.StatusUnauthorized, 401, gin.H{"err": "用户不存在"}, "权限不足")
+			response.Response(ctx, http.StatusUnauthorized, 401, gin.H{"err": "token认证失败"}, "权限不足")
 			ctx.Abort()
 			return
 		}

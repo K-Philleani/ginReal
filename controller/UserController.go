@@ -57,11 +57,11 @@ func Register(ctx *gin.Context) {
 	}
 	db.Create(&newUser)
 	// 发送token
-	token, err := common.ReleaseToken(newUser)
-	if err != nil {
-		response.Response(ctx, http.StatusUnprocessableEntity, 500, nil, "系统异常")
-	}
-	response.Success(ctx, gin.H{ "token": token }, "注册成功")
+	//token, err := common.ReleaseToken(newUser)
+	//if err != nil {
+	//	response.Response(ctx, http.StatusUnprocessableEntity, 500, nil, "系统异常")
+	//}
+	response.Success(ctx, gin.H{"phone": newUser.Phone}, "注册成功")
 
 }
 
