@@ -9,4 +9,4 @@ ENV GO111MODULE=on \
 RUN go build
 EXPOSE 9090
 
-CMD main
+CMD ./ginReal
