@@ -39,6 +39,11 @@ func DeleteUserByPhone(ctx *gin.Context) {
 		response.Fail(ctx, nil, "phone不存在")
 		return
 	}
+	currentPhonne, _ := ctx.Get("currentPhonne")
+	if currentPhonne == user.Phone {
+		response.Fail(ctx, nil, "禁止删除当前登录用户账号")
+		return
+	}
 	res := common.DB.Where("phone=?", user.Phone).Delete(&model.User{})
 	if res.Error != nil {
 		response.Fail(ctx, nil, "删除失败")

@@ -36,6 +36,7 @@ func AuthMiddleware() gin.HandlerFunc {
 			return
 		}
 		ctx.Set("user", user)
+		ctx.Set("currentPhonne", user.Phone)
 		ctx.Next()
 	}
 }
