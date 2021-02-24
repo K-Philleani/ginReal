@@ -72,6 +72,5 @@ func LoggerMiddleware() gin.HandlerFunc {
 			"req_method":   reqMethod,
 			"req_uri":      reqUrl,
 		}).Info()
-
 	}
 }

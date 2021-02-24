@@ -1,0 +1,2 @@
+{"client_ip":"::1","latency_time":148131125,"level":"info","msg":"","req_method":"POST","req_uri":"/auth/user/delete","status_code":200,"time":"2021-02-24 14:11:21"}
+{"client_ip":"::1","latency_time":68161425,"level":"info","msg":"","req_method":"GET","req_uri":"/auth/user/list","status_code":401,"time":"2021-02-24 14:11:25"}
