@@ -13,7 +13,7 @@ func main() {
 	common.InitDB()
 
 	r := gin.Default()
-	r.Use(middleware.CorsMiddleware())
+	r.Use(middleware.CorsMiddleware(), middleware.LoggerMiddleware())
 	routers.CollectRouter(r)
 	port := viper.GetString("server.port")
 	if err := r.Run(":" + port); err != nil {
