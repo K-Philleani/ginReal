@@ -1,0 +1,7 @@
+{"client_ip":"::1","latency_time":267428,"level":"info","msg":"","req_method":"GET","req_uri":"/auth/info","status_code":401,"time":"2021-02-26 15:30:53"}
+{"client_ip":"::1","latency_time":149,"level":"info","msg":"","req_method":"GET","req_uri":"/favicon.ico","status_code":404,"time":"2021-02-26 15:30:53"}
+{"client_ip":"::1","latency_time":28624,"level":"info","msg":"","req_method":"GET","req_uri":"/auth/info","status_code":401,"time":"2021-02-26 15:32:08"}
+{"client_ip":"::1","latency_time":290513811,"level":"info","msg":"","req_method":"POST","req_uri":"/api/register","status_code":422,"time":"2021-02-26 15:35:33"}
+time="2021-02-26T15:35:33+08:00" level=info client_ip="::1" latency_time=290.513811ms req_method=POST req_uri=/api/register status_code=422
+{"client_ip":"::1","latency_time":484212795,"level":"info","msg":"","req_method":"POST","req_uri":"/api/register","status_code":200,"time":"2021-02-26 15:35:52"}
+time="2021-02-26T15:35:52+08:00" level=info client_ip="::1" latency_time=484.212795ms req_method=POST req_uri=/api/register status_code=200
